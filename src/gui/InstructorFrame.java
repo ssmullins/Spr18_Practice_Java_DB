@@ -46,6 +46,14 @@ private InstructorDAO instructorDAO;
 
         jScrollPane1 = new javax.swing.JScrollPane();
         InstructorTable = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        TextFieldID = new javax.swing.JTextField();
+        TextFieldName = new javax.swing.JTextField();
+        TextFieldDept = new javax.swing.JTextField();
+        TextFieldSalary = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,25 +76,111 @@ private InstructorDAO instructorDAO;
         ));
         jScrollPane1.setViewportView(InstructorTable);
 
+        jLabel1.setText("ID:");
+
+        jLabel2.setText("Name:");
+
+        jLabel3.setText("Dept:");
+
+        jLabel4.setText("Salary:");
+
+        TextFieldID.setText("jTextField1");
+        TextFieldID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextFieldIDActionPerformed(evt);
+            }
+        });
+
+        TextFieldName.setText("jTextField2");
+        TextFieldName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextFieldNameActionPerformed(evt);
+            }
+        });
+
+        TextFieldDept.setText("jTextField3");
+        TextFieldDept.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextFieldDeptActionPerformed(evt);
+            }
+        });
+
+        TextFieldSalary.setText("jTextField4");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(TextFieldName, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
+                            .addComponent(TextFieldDept)
+                            .addComponent(TextFieldID)
+                            .addComponent(TextFieldSalary))))
+                .addContainerGap(211, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(170, 170, 170))
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(TextFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(TextFieldName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(TextFieldDept, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(TextFieldSalary, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(89, 89, 89))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void TextFieldNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextFieldNameActionPerformed
+
+    private void TextFieldIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextFieldIDActionPerformed
+
+    private void TextFieldDeptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldDeptActionPerformed
+        int ID;
+        String name, dept;
+        double salary;
+        ID = Integer.parseInt(TextFieldID.getText());
+        name = TextFieldName.getText();
+        dept = TextFieldDept.getText();
+        salary = Double.parseDouble(TextFieldSalary.getText());
+        try{
+        instructorDAO.addInstructor(ID, name, dept, salary);
+        }
+        catch(Exception exc){
+            System.out.println("Problem adding instructor" + exc);
+        }
+    }//GEN-LAST:event_TextFieldDeptActionPerformed
 
     /**
      * @param args the command line arguments
@@ -125,6 +219,14 @@ private InstructorDAO instructorDAO;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable InstructorTable;
+    private javax.swing.JTextField TextFieldDept;
+    private javax.swing.JTextField TextFieldID;
+    private javax.swing.JTextField TextFieldName;
+    private javax.swing.JTextField TextFieldSalary;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
